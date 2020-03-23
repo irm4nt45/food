@@ -1,0 +1,55 @@
+<div *ngIf="recipes">
+    <div class="sample-wrapper">
+        <igx-input-group type="search" class="searchBox" *ngIf="isBrowser">
+            <input 
+            #input1 
+            igxInput 
+            name="recipeList" 
+            placeholder="Search recipes by name" 
+            [igxAutocomplete]='recipesPanel' 
+            type="text"
+            [(ngModel)]="recipeSelected"
+            />
+            <label igxLabel for="recipeList">All receipes</label>
+            <igx-prefix *ngIf="input1.value.length > 0" (click)=search()>
+                <igx-icon>search</igx-icon>
+            </igx-prefix>
+            <igx-suffix *ngIf="input1.value.length > 0" (click)=clear(); >
+                <igx-icon>clear</igx-icon>
+            </igx-suffix>
+        </igx-input-group>
+
+        <igx-drop-down #recipesPanel maxHeight="300px">
+            <igx-drop-down-item *ngFor="let recipe of recipeList | startsWith:recipeSelected" [value]="recipe" (click)=search();>
+                {{ recipe }}
+            </igx-drop-down-item>
+        </igx-drop-down>
+        <div class="sample-content">
+            <!-- [@flyInOut] -->
+            <article class="sample-column card-wrapper" *ngFor="let recipe of recipes"
+             
+             >
+                <igx-card>
+                    <igx-card-header vertical="true">
+                        <igx-card-media height="32px">
+                            <img src="{{ recipe.strMealThumb }}" />
+                        </igx-card-media>
+                        <span igxCardHeaderTitle>{{ recipe.strMeal }}</span><span>({{ recipe.idMeal }})</span>
+                    </igx-card-header>
+                    <igx-card-content>
+                        
+                        <p>Rank: <strong>{{ recipe['rank'] }}</strong></p>
+                        <p>Proof type: <strong>{{ recipe['strIngredient1'] }}</strong></p>
+                        <p>Market Cap: <strong>${{ recipe['strIngredient4'] }}</strong></p>
+                    </igx-card-content>
+                    <igx-divider></igx-divider>
+                    <igx-card-actions>
+                        <button igxButton igxRipple>
+                            View chart
+                        </button>
+                    </igx-card-actions>
+                </igx-card>
+            </article>
+        </div>
+    </div>
+</div>
