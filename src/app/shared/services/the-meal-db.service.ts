@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 // import { sortDataByKey, fillFromJSON } from '../core/utils';
 import 'rxjs/add/operator/map';
 import { retry, catchError } from 'rxjs/operators';
-import { Receipe, Category, CategoryDietList, MealIngrediantList, MealAreaList } from '../interfaces/interfaces';
+import { Recipe, Category, CategoryDietList, MealIngrediantList, MealAreaList } from '../interfaces/interfaces';
 
 
 const httpOptions = {
@@ -41,7 +41,7 @@ httpOptions = {
    private priceMultiFullUrl = 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=';
 
 
-   recipe: Receipe[];
+   recipe: Recipe[];
    category: Category[];
    categoryDietList: CategoryDietList[];
 
@@ -52,13 +52,12 @@ httpOptions = {
    
 
    searchMealByName(name:string):Observable<any> {
-     return this.http.get<Receipe>(this.baseUrl + '/search.php?s=' + name, this.httpOptions).pipe(
-      retry(3), catchError(this.handleError<Receipe>('getRecipe')));
+     return this.http.get<Recipe>(this.baseUrl + '/search.php?s=' + name).pipe(
+      retry(3), catchError(this.handleError<Recipe>('getRecipe')));
    }
 
-
-   searchMealByFirstLetter(name: string):Observable<HttpResponse<Receipe[]>> {
-    return this.http.get<Receipe[]>(this.baseUrl + '/search.php?f=' + name, { observe: 'response' });
+   searchMealByFirstLetter(name: string):Observable<HttpResponse<Recipe[]>> {
+    return this.http.get<Recipe[]>(this.baseUrl + '/search.php?f=' + name, { observe: 'response' });
   }
 
   // searchMealByFirstLetter(name: string):Observable<Receipe[]> {
@@ -66,20 +65,19 @@ httpOptions = {
   // }
 
   searchMealById(id:number):Observable<any> {
-    return this.http.get<Receipe>(this.baseUrl + '/lookup.php?i=' + id, httpOptions).pipe(
-     retry(3), catchError(this.handleError<Receipe>('getRecipe')));
+    return this.http.get<Recipe>(this.baseUrl + '/lookup.php?i=' + id, httpOptions).pipe(
+     retry(3), catchError(this.handleError<Recipe>('getRecipe')));
   }
 
   searchRandomMeal():Observable<any> {
-    return this.http.get<Receipe>(this.baseUrl + '/random.php', httpOptions).pipe(
-     retry(3), catchError(this.handleError<Receipe>('getRecipe')));
+    return this.http.get<Recipe>(this.baseUrl + '/random.php').pipe(
+     retry(3), catchError(this.handleError<Recipe>('getRecipe')));
   }
 
 
   //subscribtion
-  search10RandomMeal():Observable<Receipe[]> {
-    return this.http.get<Receipe[]>(this.baseUrl + '/randomselection.php', httpOptions).pipe(
-     retry(3), catchError(this.handleError<Receipe[]>('getRecipe')));
+  search10RandomMeal():Observable<HttpResponse<Recipe[]>> {
+    return this.http.get<Recipe[]>(this.baseUrl + '/randomselection.php', { observe: 'response' });
   }
   
   mealCategoriesList():Observable<Category[]> {
@@ -88,9 +86,9 @@ httpOptions = {
   }
 
   //subscription
-  searchLatestMeals():Observable<Receipe[]> {
-    return this.http.get<Receipe[]>(this.baseUrl + '/latest.php', httpOptions).pipe(
-      retry(3), catchError(this.handleError<Receipe[]>('getRecipe')));
+  searchLatestMeals():Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.baseUrl + '/latest.php', httpOptions).pipe(
+      retry(3), catchError(this.handleError<Recipe[]>('getRecipe')));
   }
 
   mealCategoriesDietList():Observable<CategoryDietList[]> {
@@ -106,24 +104,24 @@ httpOptions = {
      retry(3), catchError(this.handleError<MealIngrediantList[]>('getRecipe')));
   }
 
-  filterByIngredient(ingredient: string):Observable<Receipe[]> {
-    return this.http.get<Receipe[]>(this.baseUrl + '/filter.php?i=' + ingredient, httpOptions).pipe(
-     retry(3), catchError(this.handleError<Receipe[]>('getRecipe')));
+  filterByIngredient(ingredient: string):Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.baseUrl + '/filter.php?i=' + ingredient, httpOptions).pipe(
+     retry(3), catchError(this.handleError<Recipe[]>('getRecipe')));
   }
   //subsribtion
-  filterByIngredients(ingredients: string):Observable<Receipe[]> {
+  filterByIngredients(ingredients: string):Observable<Recipe[]> {
     this.itemsInTheFridge = ingredients;
-    return this.http.get<Receipe[]>(this.baseUrl + '/filter.php?i=' + ingredients, httpOptions).pipe(
-     retry(3), catchError(this.handleError<Receipe[]>('getRecipe')));
+    return this.http.get<Recipe[]>(this.baseUrl + '/filter.php?i=' + ingredients, httpOptions).pipe(
+     retry(3), catchError(this.handleError<Recipe[]>('getRecipe')));
   }
 
-  filterByCategory(category: string):Observable<Receipe[]> {
-    return this.http.get<Receipe[]>(this.baseUrl + '/filter.php?c' + category, httpOptions).pipe(
-     retry(3), catchError(this.handleError<Receipe[]>('getRecipe')));
+  filterByCategory(category: string):Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.baseUrl + '/filter.php?c' + category, httpOptions).pipe(
+     retry(3), catchError(this.handleError<Recipe[]>('getRecipe')));
   }
-  filterByArea(area: string):Observable<Receipe[]> {
-    return this.http.get<Receipe[]>(this.baseUrl + '/filter.php?a' + area, httpOptions).pipe(
-     retry(3), catchError(this.handleError<Receipe[]>('getRecipe')));
+  filterByArea(area: string):Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.baseUrl + '/filter.php?a' + area, httpOptions).pipe(
+     retry(3), catchError(this.handleError<Recipe[]>('getRecipe')));
   }
 
 

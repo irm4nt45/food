@@ -22,6 +22,7 @@ import {LazyLoadImageModule} from 'ng-lazyload-image';
 import {RouterModule} from '@angular/router';
 import {PrebootModule} from 'preboot';
 import { TheMealDbService } from './shared/services/the-meal-db.service';
+import { APP_CONFIG, AppConfig } from './configs/app.config';
 // import { TheMealDbService } from './shared/services/the-meal-db.service';
 
 
@@ -67,9 +68,6 @@ export function appInitializer(document: HTMLDocument, platformId: object) {
     LazyLoadImageModule.forRoot({}),
     CoreModule,
     SharedModule
-
-
-    
   ],
   declarations: [
     HomePageComponent,
@@ -77,9 +75,9 @@ export function appInitializer(document: HTMLDocument, platformId: object) {
     AppComponent
   ],
   providers: [
-    // {provide: APP_CONFIG, useValue: AppConfig},
+    {provide: APP_CONFIG, useValue: AppConfig},
     {provide: ROUTES_CONFIG, useValue: RoutesConfig},
-    // {provide: ENDPOINTS_CONFIG, useValue: EndpointsConfig},
+    {provide: ENDPOINTS_CONFIG, useValue: EndpointsConfig},
     // {provide: ErrorHandler, useClass: SentryErrorHandler},
     {
       provide: TRANSLATIONS,

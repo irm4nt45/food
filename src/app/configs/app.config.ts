@@ -6,8 +6,11 @@ export const AppConfig: any = {
   votesLimit: 3,
   topHeroesLimit: 5,
   snackBarDuration: 3000,
-  repositoryURL: 'https://github.com/ismaestro/angular8-example-app',
-  sentryDSN: 'https://38434a1b115f41d3a31e356cdc496c06@sentry.io/1315526',
+  // repositoryURL: 'https://github.com/ismaestro/angular8-example-app',
+  // sentryDSN: 'https://38434a1b115f41d3a31e356cdc496c06@sentry.io/1315526',
+
+  repositoryURL: '',
+  sentryDSN: '',
   cspDirectives: {
     defaultSrc: [
       '\'self\'',
@@ -21,7 +24,8 @@ export const AppConfig: any = {
       'https://authedmine.com',
       'https://az743702.vo.msecnd.net',
       'https://sentry.io',
-      'ws://localhost:4200',
+      'https://www.themealdb.com/',
+      'ws:https://wellbeing-8e33d.web.app',
     ],
     styleSrc: [
       '\'self\'',

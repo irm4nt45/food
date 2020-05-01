@@ -13,7 +13,9 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
-import { IgxNavigationDrawerModule, IgxIconModule, IgxNavbarModule, IgxButtonModule, IgxRippleModule, IgxLayoutModule, IgxSnackbarModule, IgxInputGroupModule, IgxAutocompleteModule, IgxDropDownModule, IgxCardModule, IgxDividerModule, IgxExpansionPanelModule } from 'igniteui-angular';
+import { IgxNavigationDrawerModule, IgxIconModule, IgxNavbarModule, IgxButtonModule, IgxRippleModule, IgxLayoutModule, IgxSnackbarModule, 
+  IgxInputGroupModule, IgxAutocompleteModule, IgxDropDownModule, IgxCardModule, IgxDividerModule, IgxExpansionPanelModule,
+   IgxDialogModule, IgxDragDropModule, IgxDropDirective, IgxDragDirective } from 'igniteui-angular';
 
 
 import {NgModule} from '@angular/core';
@@ -49,7 +51,8 @@ import {NgModule} from '@angular/core';
     IgxDividerModule,
     IgxCardModule,
     IgxDropDownModule,
-    IgxExpansionPanelModule
+    IgxExpansionPanelModule,
+    IgxDragDropModule
     
   ],
   exports: [
@@ -82,7 +85,8 @@ import {NgModule} from '@angular/core';
     IgxDividerModule,
     IgxCardModule,
     IgxDropDownModule,
-    IgxExpansionPanelModule
+    IgxExpansionPanelModule,
+    IgxDragDropModule
   ],
 })
 

@@ -25,6 +25,8 @@ import { DashboardComponent } from './components/firebase/dashboard/dashboard.co
 import { MaterialModule } from './modules/material.module';
 import { RecipesComponent, AutocompletePipeStartsWith } from './components/recipes/recipes.component';
 import { TheMealDbService } from './services/the-meal-db.service';
+import { RecipeComponent } from './components/recipes/recipe/recipe.component';
+import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 //import { AppBrowserModule } from '../app.browser.module';
 
 
@@ -40,8 +42,6 @@ import { TheMealDbService } from './services/the-meal-db.service';
     LazyLoadImageModule,
     FormsModule,
     MaterialModule
-    
-    
 
   ],
   declarations: [
@@ -60,7 +60,9 @@ import { TheMealDbService } from './services/the-meal-db.service';
     VerifyEmailComponent,
     DashboardComponent,
     RecipesComponent,
-    AutocompletePipeStartsWith
+    AutocompletePipeStartsWith,
+    RecipeComponent,
+    RecipeCardComponent
     
   ],
   exports: [
@@ -84,7 +86,9 @@ import { TheMealDbService } from './services/the-meal-db.service';
     VerifyEmailComponent,
     DashboardComponent,
     MaterialModule,
-    AutocompletePipeStartsWith
+    AutocompletePipeStartsWith,
+    RecipeComponent,
+    RecipeCardComponent
   ],
   providers: []
 })

@@ -18,6 +18,8 @@ const domino = require('domino');
 const fs = require('fs');
 const path = require('path');
 
+const cors = require('cors');
+
 const template = fs.readFileSync(path.join(process.cwd(), 'dist', 'browser', 'index.html')).toString();
 const win = domino.createWindow(template);
 
@@ -51,6 +53,10 @@ global[navigator] = win.navigator;
 
 
 const app = express();
+
+app.use(cors());
+
+
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist');
 const routes = [

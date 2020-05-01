@@ -4,6 +4,8 @@ import {TimingInterceptor} from './interceptors/timing.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ProgressInterceptor} from './interceptors/progress.interceptor';
 import {APIInterceptor} from './interceptors/API.interceptor';
+import {API2Interceptor} from './interceptors/API2.interceptor';
+import {API3Interceptor} from './interceptors/API3.interceptor';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
@@ -21,7 +23,9 @@ import {RouterModule} from '@angular/router';
   providers: [
     // {provide: HTTP_INTERCEPTORS, useClass: ProgressInterceptor, multi: true, deps: [ProgressBarService]},
     // {provide: HTTP_INTERCEPTORS, useClass: TimingInterceptor, multi: true}
-      {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true}
+      {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true},
+      {provide: HTTP_INTERCEPTORS, useClass: API2Interceptor, multi: true},
+      {provide: HTTP_INTERCEPTORS, useClass: API3Interceptor, multi: true}
   ]
 })
 

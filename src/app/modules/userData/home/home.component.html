@@ -1,0 +1,199 @@
+<div style="width: 100%; height: 100px;"> 
+    <div>
+        <p>Today is {{today | date}}</p>
+        <!-- <p>Or if you prefer, {{today | date:'EEEE, d' : 'PDT'}}</p> -->
+        <p>The time is {{today }}</p>
+      </div>
+    </div>
+
+    <article class="recipes-section layout-box"
+    igxLayout igxLayoutDir="row"
+    #recipesFromDb
+    igxDrop
+    id="recipesFromDbList"
+    class="state-container"
+    [attr.data-state]="'recipesFromDb'"
+    (enter)="onStateContainerEnter($event)"
+    (leave)="onStateContainerLeave($event)"
+    (dropped)="onItemDropped($event)">
+
+
+      
+            <igx-card 
+            igxFlex
+            *ngFor="let recipe of recipes"
+            igxDrag
+            igxDrop
+            (dragStart)="dragStartHandler($event)"
+            (dragEnd)="dragEndHandler($event)"
+            (enter)="onItemEnter($event)"
+            (leave)="onItemLeave($event)"
+            class="item-container layout-box__el"
+            [class.notVisible]="recipe.strMeal === 'dummy'"
+            id="{{recipe.strMeal}}"
+            [attr.data-state]="recipe.state"
+            [hideBaseOnDrag]="true"
+            [dragTolerance]="0"
+            [ghostClass]="'drag-ghost-class'"
+             >
+              <igx-card-header>
+                  <!-- <igx-avatar src="https://www.infragistics.com/angular-demos/assets/images/card/avatars/photographer.jpg" roundShape="true"></igx-avatar> -->
+                  <h4 igxCardHeaderTitle>{{ recipe.strMeal }}</h4>
+                  <!-- <h5 igxCardHeaderSubtitle>{{ recipe.strCategory }}</h5> -->
+              </igx-card-header>
+          
+              <igx-card-media>
+                  <img src="{{ recipe.strMealThumb }}">
+              </igx-card-media>
+          
+              <!-- <igx-card-content>
+                  <p>Photographer Frank Carter won this year national photo contest with his image "Skies" which gathered the most votes in the competition.</p>
+              </igx-card-content> -->
+          
+         
+          </igx-card>
+     
+
+
+        </article>
+
+   
+
+
+
+
+<section class="kanban" style="margin-top:250px">
+    <article 
+        #day0
+        igxDrop
+        id="day0List"
+        class="state-container"
+        [attr.data-state]="'day0'"
+        (enter)="onStateContainerEnter($event)"
+        (leave)="onStateContainerLeave($event)"
+        (dropped)="onItemDropped($event)">        
+        <h4 class="igx-typography__h4 state-title">{{today }} {{day0List.length}}</h4>
+
+
+
+            <igx-card 
+            *ngFor="let item of day0List"
+            igxDrag
+            igxDrop
+            (dragStart)="dragStartHandler($event)"
+            (dragEnd)="dragEndHandler($event)"
+            (enter)="onItemEnter($event)"
+            (leave)="onItemLeave($event)"
+            class="item-container"
+            [class.notVisible]="item.strMeal === 'dummy'"
+            id="{{item.strMeal}}"
+            [attr.data-state]="item.state"
+            [hideBaseOnDrag]="true"
+            [dragTolerance]="0"
+            [ghostClass]="'drag-ghost-class'"
+             >
+              <igx-card-header>
+                  <!-- <igx-avatar src="https://www.infragistics.com/angular-demos/assets/images/card/avatars/photographer.jpg" roundShape="true"></igx-avatar> -->
+                  <h4 igxCardHeaderTitle>{{ recipe.strMeal }}</h4>
+                  <!-- <h5 igxCardHeaderSubtitle>{{ recipe.strCategory }}</h5> -->
+              </igx-card-header>
+          
+              <igx-card-media>
+                  <img src="{{ recipe.strMealThumb }}">
+              </igx-card-media>
+          
+              <!-- <igx-card-content>
+                  <p>Photographer Frank Carter won this year national photo contest with his image "Skies" which gathered the most votes in the competition.</p>
+              </igx-card-content> -->
+          
+         
+          </igx-card>
+        
+    </article>
+    <article 
+        #day1
+        igxDrop 
+        id="day1List"
+        class="state-container"
+        [attr.data-state]="'day1'"
+        (enter)="onStateContainerEnter($event)"
+        (leave)="onStateContainerLeave($event)"
+        (dropped)="onItemDropped($event)">
+        <h4 class="state-title">{{tomorrow }} {{day1List.length}}</h4>
+        <igx-card 
+            *ngFor="let item of day1List"
+            igxDrag
+            igxDrop
+            (dragStart)="dragStartHandler($event)"
+            (dragEnd)="dragEndHandler($event)"
+            (enter)="onItemEnter($event)"
+            (leave)="onItemLeave($event)"
+            class="item-container"
+            [class.notVisible]="item.strMeal === 'dummy'"
+            id="{{item.strMeal}}"
+            [attr.data-state]="item.state"
+            [hideBaseOnDrag]="true"
+            [dragTolerance]="0"
+            [ghostClass]="'drag-ghost-class'"
+             >
+              <igx-card-header>
+                  <!-- <igx-avatar src="https://www.infragistics.com/angular-demos/assets/images/card/avatars/photographer.jpg" roundShape="true"></igx-avatar> -->
+                  <h4 igxCardHeaderTitle>{{ recipe.strMeal }}</h4>
+                  <!-- <h5 igxCardHeaderSubtitle>{{ recipe.strCategory }}</h5> -->
+              </igx-card-header>
+          
+              <igx-card-media>
+                  <img src="{{ recipe.strMealThumb }}">
+              </igx-card-media>
+          
+              <!-- <igx-card-content>
+                  <p>Photographer Frank Carter won this year national photo contest with his image "Skies" which gathered the most votes in the competition.</p>
+              </igx-card-content> -->
+          
+         
+          </igx-card> 
+    </article>
+    <article 
+        #day2
+        igxDrop
+        id="day2List"
+        class="state-container"
+        [attr.data-state]="'day2'"
+        (enter)="onStateContainerEnter($event)"
+        (leave)="onStateContainerLeave($event)"
+        (dropped)="onItemDropped($event)">
+        <h4 class="state-title">{{dayAfterTomorrow }} {{day2List.length}}</h4>
+        <igx-card 
+        *ngFor="let item of day2List"
+        igxDrag
+        igxDrop
+        (dragStart)="dragStartHandler($event)"
+        (dragEnd)="dragEndHandler($event)"
+        (enter)="onItemEnter($event)"
+        (leave)="onItemLeave($event)"
+        class="item-container"
+        [class.notVisible]="item.strMeal === 'dummy'"
+        id="{{item.strMeal}}"
+        [attr.data-state]="item.state"
+        [hideBaseOnDrag]="true"
+        [dragTolerance]="0"
+        [ghostClass]="'drag-ghost-class'"
+         >
+          <igx-card-header>
+              <!-- <igx-avatar src="https://www.infragistics.com/angular-demos/assets/images/card/avatars/photographer.jpg" roundShape="true"></igx-avatar> -->
+              <h4 igxCardHeaderTitle>{{ recipe.strMeal }}</h4>
+              <!-- <h5 igxCardHeaderSubtitle>{{ recipe.strCategory }}</h5> -->
+          </igx-card-header>
+      
+          <igx-card-media>
+              <img src="{{ recipe.strMealThumb }}">
+          </igx-card-media>
+      
+          <!-- <igx-card-content>
+              <p>Photographer Frank Carter won this year national photo contest with his image "Skies" which gathered the most votes in the competition.</p>
+          </igx-card-content> -->
+      
+     
+      </igx-card>    
+    </article>
+</section>

@@ -1,0 +1,35 @@
+<mat-card class="hero-card" *ngIf="recipe" >
+
+
+    <mat-card-header>
+      <a mat-card-avatar >
+        <img alt="hero avatar" mat-card-avatar [src]="recipe.strMealThumb">
+      </a>
+      <mat-card-title>
+        <a class="hero-detail-link" >
+          {{recipe.strMeal}}
+        </a>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <a class="hero-detail-link" >
+          {{recipe.strInstructions}}
+        </a>
+      </mat-card-subtitle>
+      <div class="flex-spacer"></div>
+      <div class="hero-actions">
+        {{recipe.likes}}
+        <mat-icon class="icon__like--red" (click)="like(recipe)">favorite
+        </mat-icon>
+      </div>
+    </mat-card-header>
+    <a class="hero-detail-link" >
+      <img alt="{{recipe.strMealThumb}} hero image" [defaultImage]="recipe.strMealThumb" [lazyLoad]="recipe.strMealThumb">
+    </a>
+  </mat-card>
+<button *ngIf="recipe" aria-label="Anchor the hero button" mat-raised-button type="button" (click)="goToTheAnchor()"
+        >
+  Anchor the hero
+</button>
+<button aria-label="Go back button" mat-raised-button type="button" (click)="goBack()" >
+  Go back
+</button>

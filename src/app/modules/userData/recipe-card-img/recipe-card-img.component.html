@@ -1,0 +1,19 @@
+<article class="sample-column card-wrapper">
+    <igx-card *ngIf="recipe" >
+      <igx-card-header>
+          <!-- <igx-avatar src="https://www.infragistics.com/angular-demos/assets/images/card/avatars/photographer.jpg" roundShape="true"></igx-avatar> -->
+          <h4 igxCardHeaderTitle>{{ recipe.strMeal }}</h4>
+          <!-- <h5 igxCardHeaderSubtitle>{{ recipe.strCategory }}</h5> -->
+      </igx-card-header>
+  
+      <igx-card-media>
+          <img src="{{ recipe.strMealThumb }}">
+      </igx-card-media>
+  
+      <!-- <igx-card-content>
+          <p>Photographer Frank Carter won this year national photo contest with his image "Skies" which gathered the most votes in the competition.</p>
+      </igx-card-content> -->
+  
+ 
+  </igx-card>
+  </article>

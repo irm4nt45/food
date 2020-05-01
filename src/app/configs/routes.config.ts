@@ -6,6 +6,10 @@ const basePaths = {
   heroes: 'heroes',
 };
 
+const base = {
+  recipes: 'recipes',
+};
+
 const routesNames = {
   home: '',
   error404: '404',
@@ -16,8 +20,12 @@ const routesNames = {
   forgotpassword: 'forgot-password',
   verifyemailaddress: 'verify-email-address',
   search: 'search',
+  day3: 'main-page',
   heroes: {
     basePath: basePaths.heroes
+  },
+  recipes: {
+    base: base.recipes
   }
 };
 
@@ -33,11 +41,19 @@ export const RoutesConfig: any = {
     forgotpassword: `/${routesNames.forgotpassword}`,
     verifyemailaddress: `/${routesNames.verifyemailaddress}`,
     search: `/${routesNames.search}`,
+    day3: `/${routesNames.day3}`,
+    recipes: {
+      recipe: getRecipe
+    },
     heroes: {
       detail: getHeroDetail
     }
   }
 };
+
+export function getRecipe(id) {
+  return `/${base.recipes}/${id}`;
+}
 
 export function getHeroDetail(id) {
   return `/${basePaths.heroes}/${id}`;

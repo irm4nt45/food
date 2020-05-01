@@ -1,0 +1,71 @@
+<!-- <mat-card class="hero-card" *ngIf="hero" [@fadeIn]="fadeIn">
+    <mat-card-header>
+      <a mat-card-avatar [routerLink]="hero.default ? [routesConfig.routes.heroes.detail(hero.id)] : []">
+        <img alt="hero avatar" mat-card-avatar [src]="hero.avatarThumbnailUrl">
+      </a>
+      <mat-card-title>
+        <a class="hero-detail-link" [routerLink]="hero.default ? [routesConfig.routes.heroes.detail(hero.id)] : []">
+          {{hero.name}}
+        </a>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <a class="hero-detail-link" [routerLink]="hero.default ? [routesConfig.routes.heroes.detail(hero.id)] : []">
+          {{hero.alterEgo}}
+        </a>
+      </mat-card-subtitle>
+      <div class="flex-spacer"></div>
+      <div class="hero-actions">
+        {{hero.likes}}
+        <mat-icon class="icon__like--red" (click)="like(hero)">favorite
+        </mat-icon>
+      </div>
+    </mat-card-header>
+    <a class="hero-detail-link" [routerLink]="hero.default ? [routesConfig.routes.heroes.detail(hero.id)] : []">
+      <img alt="{{hero.name}} hero image" [defaultImage]="hero.avatarBlurredUrl" [lazyLoad]="hero.avatarUrl">
+    </a>
+  </mat-card>
+
+  <igx-card>
+    <igx-card-header vertical="true">
+        <igx-card-media height="32px">
+            <img src="" />
+        </igx-card-media>
+        <span igxCardHeaderTitle></span><span>({{ recipe.idMeal }})</span>
+    </igx-card-header>
+    <igx-card-content>
+        
+        <p>Rank: <strong>{{ recipe['rank'] }}</strong></p>
+        <p>Proof type: <strong>{{ recipe['strIngredient1'] }}</strong></p>
+        <p>Market Cap: <strong>${{ recipe['strIngredient4'] }}</strong></p>
+    </igx-card-content>
+    <igx-divider></igx-divider>
+    <igx-card-actions>
+        <button igxButton igxRipple [routerLink]="[routesConfig.routes.recipes.recipe(recipe.strMeal)]"> 
+            View chart
+        </button>
+    </igx-card-actions>
+</igx-card> -->
+
+  <!-- [@fadeIn]="fadeIn" -->
+  <article class="sample-column card-wrapper">
+  <igx-card *ngIf="recipe" >
+    <igx-card-header>
+        <!-- <igx-avatar src="https://www.infragistics.com/angular-demos/assets/images/card/avatars/photographer.jpg" roundShape="true"></igx-avatar> -->
+        <h4 igxCardHeaderTitle>{{ recipe.strMeal }}</h4>
+        <h5 igxCardHeaderSubtitle>{{ recipe.strCategory }}</h5>
+    </igx-card-header>
+
+    <igx-card-media>
+        <img src="{{ recipe.strMealThumb }}">
+    </igx-card-media>
+
+    <!-- <igx-card-content>
+        <p>Photographer Frank Carter won this year national photo contest with his image "Skies" which gathered the most votes in the competition.</p>
+    </igx-card-content> -->
+
+    <igx-card-actions>
+        <button igxButton>Like</button>
+        <button igxButton>Share</button>
+    </igx-card-actions>
+</igx-card>
+</article>

@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { User } from '../interfaces/interfaces';
+import { first, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,9 @@ export class Auth2Service {
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe(user => {
       if (user) {
+        console.log('log data, new way' + user.uid)
+        console.log('log data, new way' + user.email)
+        console.log('log data, new way' + user.getIdToken())
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user'));
@@ -31,6 +35,26 @@ export class Auth2Service {
       }
     })
   }
+
+ isLoggedIn() {
+    return this.afAuth.authState.pipe(first())
+ }
+  
+ 
+ doSomething() {
+   this.isLoggedIn().pipe(
+     tap(user => {
+       if (user) {
+        console.log('log data, old way' + user.uid)
+        console.log('log data, old way' + user.email)
+        console.log('log data, old way' + user.getIdToken)
+       } else {
+         // do something else
+       }
+     })
+   )
+   .subscribe()
+ }
 
 
 
@@ -53,10 +77,12 @@ export class Auth2Service {
   }
 
   // Returns true when user is looged in and email is verified
-  get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null && user.emailVerified !== false) ? true : false;
-  }
+  // get isLoggedIn(): boolean {
+  //   const user = JSON.parse(localStorage.getItem('user'));
+  //   return (user !== null && user.emailVerified !== false) ? true : false;
+  // }
+
+ 
 
 
 

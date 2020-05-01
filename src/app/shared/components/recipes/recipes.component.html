@@ -29,7 +29,8 @@
             <article class="sample-column card-wrapper" *ngFor="let recipe of recipes"
              
              >
-                <igx-card>
+             <app-recipe-card [recipe]="recipe" (click)="recipeClicked($event)"></app-recipe-card>
+                <!-- <igx-card>
                     <igx-card-header vertical="true">
                         <igx-card-media height="32px">
                             <img src="{{ recipe.strMealThumb }}" />
@@ -44,11 +45,11 @@
                     </igx-card-content>
                     <igx-divider></igx-divider>
                     <igx-card-actions>
-                        <button igxButton igxRipple>
+                        <button igxButton igxRipple [routerLink]="[routesConfig.routes.recipes.recipe(recipe.strMeal)]"> 
                             View chart
                         </button>
                     </igx-card-actions>
-                </igx-card>
+                </igx-card> -->
             </article>
         </div>
     </div>

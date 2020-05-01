@@ -1,3 +1,5 @@
+import { Deserializable } from './deserializable.interface';
+
 export class MealIngrediantList {
     idIngredient: '';
     strIngredient: '';
@@ -13,7 +15,15 @@ export class MealIngrediantList {
    emailVerified: boolean;
 }
 
-export class Receipe {
+export enum state {
+   recipesDb = "recipesDb",
+   day0 = "day0",
+   day1 = "day1",
+   day2 = "day2"
+ }
+ 
+
+export class Recipe implements Deserializable {
    idMeal = 0;                 // CoinInfo.Id
    strMeal = '';              // CoinInfo.Name
    strDrinkAltenative = '';          // CoinInfo.FullName
@@ -65,7 +75,52 @@ export class Receipe {
    strMeasure20 = ''; 
    strSource = '';
    dateModified = '';
+   likes= '';
+   state= '';
+
+
+   like() {
+      this.likes += 1;
+    }
+  
+    deserialize(input: any) {
+      Object.assign(this, input);
+      return this;
+    }
 }
+
+export class Day implements Deserializable {
+   id:string;
+   date: string;
+   
+   constructor(day: any = {}) {
+      this.id = day.id;
+     this.date = day.name || '';
+   }
+ 
+   deserialize(input: any) {
+     Object.assign(this, input);
+     return this;
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export class Category {
    idCategory: '';

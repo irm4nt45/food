@@ -7,8 +7,9 @@ import { Router } from '@angular/router';
 // import { IgxExpansionPanelComponent, IgxInputGroupComponent } from 'igniteui-angular';
 import { FormBuilder } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common';
-import { Receipe } from '../../interfaces/interfaces';
+import { Recipe } from '../../interfaces/interfaces';
 import { TheMealDbService } from '../../services/the-meal-db.service';
+import { ROUTES_CONFIG } from 'src/app/configs/routes.config';
 
 @Component({
   selector: 'app-recipes',
@@ -18,7 +19,7 @@ import { TheMealDbService } from '../../services/the-meal-db.service';
 })
 export class RecipesComponent implements OnInit {
 
-  recipes: Receipe[];
+  recipes: Recipe[];
   recipeList = [];
   headers: any;
   pagination: string = 'a';
@@ -37,7 +38,13 @@ export class RecipesComponent implements OnInit {
   // @ViewChild(IgxExpansionPanelComponent, { static: false })
   // public panel: IgxExpansionPanelComponent;
 
-  constructor(private router: Router, private recipeService: TheMealDbService, fb: FormBuilder, @Inject(PLATFORM_ID) private platformId) {
+  constructor(private router: Router, 
+    private recipeService: TheMealDbService, 
+    fb: FormBuilder, 
+    @Inject(PLATFORM_ID) private platformId,
+    @Inject(ROUTES_CONFIG) public routesConfig: any) 
+    
+    {
     this.isBrowser = isPlatformBrowser(platformId);
 
     this.recipeList = [ "aaaaaaa",
@@ -114,7 +121,7 @@ private transformReceipe(data) {
      const indexes = Object.keys(data['meals']);
 
      for (const idx of indexes) {
-        const newRecipe = new Receipe();
+        const newRecipe = new Recipe();
         transformedData.push(flattenObject(data['meals'][idx]));
         fillFromJSON(newRecipe, transformedData[idx]);
         
@@ -148,7 +155,9 @@ public clear() {
   this.recipeSelected = '';
 }
 
+public recipeClicked(event){
 
+}
 
 //implement food items images adding /......
 // public getReceipeImage(imageUrl: string) {

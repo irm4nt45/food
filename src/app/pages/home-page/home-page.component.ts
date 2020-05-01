@@ -14,13 +14,15 @@ import {defaultIfEmpty, map} from 'rxjs/operators';
 export class HomePageComponent implements OnInit {
   heroes$: Observable<Hero[]>;
 
-  constructor(private heroService: HeroService) {
+  constructor(
+    // private heroService: HeroService
+    ) {
   }
 
   ngOnInit() {
-    this.heroes$ = this.heroService.getHeroes().pipe(
-      map((heroes) => heroes.slice(0, AppConfig.topHeroesLimit)),
-      defaultIfEmpty([])
-    );
+    // this.heroes$ = this.heroService.getHeroes().pipe(
+    //   map((heroes) => heroes.slice(0, AppConfig.topHeroesLimit)),
+    //   defaultIfEmpty([])
+    // );
   }
 }

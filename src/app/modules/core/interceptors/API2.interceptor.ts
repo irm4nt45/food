@@ -3,7 +3,7 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse, Http
 import {Observable, throwError} from 'rxjs';
 import {ProgressBarService} from '../../../shared/services/progress-bar.service';
 
- export class APIInterceptor implements HttpInterceptor { 
+ export class API2Interceptor implements HttpInterceptor { 
 
 
    intercept(
@@ -11,7 +11,7 @@ import {ProgressBarService} from '../../../shared/services/progress-bar.service'
        next: HttpHandler
        ): Observable<HttpEvent<any>> { 
   
-     const cloneReq = req.clone({ setHeaders: {"Access-Control-Allow-Origin": "*"}
+     const cloneReq = req.clone({ setHeaders: {"Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS"}
      
     //  new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'jwt-token',
     //  "content_security_policy": "default-src 'none';script-src 'self';style-src 'self';font-src 'self';img-src 'self' data:;connect-src 'self'"})
